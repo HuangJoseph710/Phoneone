@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="imageInput">
+    <button onclick="convertToBase64()">轉換成 Base64</button>
+
+    <script>
+    function convertToBase64() {
+    // 取得使用者選擇的圖片檔案
+    var fileInput = document.getElementById('imageInput');
+    var file = fileInput.files[0];
+
+    // 建立 FileReader 物件
+    var reader = new FileReader();
+
+    // 設定當讀取完成時的回呼函式
+    reader.onloadend = function() {
+        // 取得圖片的 Base64 編碼字串
+        var base64String = reader.result;
+        console.log(base64String);
+    };
+
+    // 讀取圖片檔案並轉換成 Base64 編碼
+    reader.readAsDataURL(file);
+    }
+    </script>
+
+</body>
+</html>
